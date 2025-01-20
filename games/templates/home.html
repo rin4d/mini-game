@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Connexion</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 </head>
 <body>
-    <h1>Bienvenue sur MiniGame !</h1>
+    <div class="login-container">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Nom d'utilisateur ou Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Mot de passe" required>
+            </div>
+            <div class="form-options">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn">LOGIN</button>
+        </form>
+    </div>
 </body>
 </html>
